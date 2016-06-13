@@ -1,0 +1,6 @@
+[submodule "cloneHD"]
+	path = cloneHD
+	url = https://github.com/ivazquez/cloneHD.git
+[submodule "cloneHD-tools"]
+  path = cloneHD-tools
+  url = https://github.com/ivazquez/cloneHD-tools.git
