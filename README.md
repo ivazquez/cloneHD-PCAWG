@@ -10,13 +10,13 @@ To clone this repository, run the following command in a local directory:
 
 To set up the workflow in a container using `docker`:
 
-    $ docker build -t quay.io/ivazquez/pcawg_clonehd_workflow:1.0.0 .
+    $ docker build -t quay.io/ivazquez/pcawg_clonehd_workflow:v1.0.0 .
 
 This will build and compile cloneHD and cloneHD-tools, plus all dependencies.
 
     $ wget https://console.developers.google.com/m/cloudstorage/b/galaxyproject_images/o/Tumour2.tar.gz
     $ tar -xvfz Tumour2.tar.gz && cd Tumour2
-    $ docker run -it -v `pwd`/Tumour2.mutect.vcf:/Tumour2.mutect.vcf `pwd`/Tumour2.battenberg.txt:/Tumour2.battenberg.txt ivazquez/pcawg_clonehd_workflow:1.0-0
+    $ docker run -it -v `pwd`/Tumour2.mutect.vcf:/Tumour2.mutect.vcf `pwd`/Tumour2.battenberg.txt:/Tumour2.battenberg.txt ivazquez/pcawg_clonehd_workflow:v1.0-0
   
 Now that you are within the `docker` container, you can execute:
 
@@ -26,7 +26,7 @@ Now that you are within the `docker` container, you can execute:
 
 Fetch a descriptor file in CWL format that tells Dockstore what are the cloneHD inputs and outputs:
 
-    $ dockstore cwl --entry quay.io/ivazquez/pcawg-clonehd-workflow:1.0-0 > Dockstore.cwl
+    $ dockstore cwl --entry quay.io/ivazquez/pcawg-clonehd-workflow:v1.0-0 > Dockstore.cwl
 
 You can create a runtime JSON template and edit it (or use the content of sample_config.json above).
 
@@ -34,7 +34,7 @@ You can create a runtime JSON template and edit it (or use the content of sample
 
 You can now run it locally with the Dockstore CLI:
 
-    $ dockstore launch --entry quay.io/ivazquez/pcawg-clonehd-workflow:1.0-0 --json Dockstore.json
+    $ dockstore launch --entry quay.io/ivazquez/pcawg-clonehd-workflow:v1.0-0 --json Dockstore.json
 
 ## How to cite
 
