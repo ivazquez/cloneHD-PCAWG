@@ -18,7 +18,7 @@ RUN pip install numpy scipy PyVCF
 RUN git clone https://github.com/ivazquez/cloneHD.git && cd cloneHD && git checkout pcawg
 RUN cd cloneHD/src && mkdir ../build && make -f Makefile.farm
 
-# RUN git clone git@github.com:ivazquez/cloneHD-tools.git && cd cloneHD-tools && git checkout pcawg
+# RUN git clone https://github.com/ivazquez/cloneHD-tools.git && cd cloneHD-tools && git checkout pcawg
 # RUN cd cloneHD-tools && python setup.py install
 
 # Switch back to the ubuntu user so this tool (and the files written) are not owned by root
