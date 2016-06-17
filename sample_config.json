@@ -1,0 +1,14 @@
+{
+  "vcf_input": {
+    "class": "File",
+    "path": "/tmp/sample_snv.vcf"
+  },
+  "cna_input": {
+    "class": "File",
+    "path": "/tmp/sample_cna.txt"
+  },
+  "clonehd_report": {
+    "class": "File",
+    "path": "/tmp/clonehd_report.zip"
+  }
+}
