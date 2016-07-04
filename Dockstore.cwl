@@ -57,4 +57,4 @@ outputs:
       glob: clonehd_report.zip
     description: "A zip file that contains the cloneHD report and various graphics."
 
-baseCommand: ["bash", "/usr/local/bin/cloneHD"]
+baseCommand: ["bash", "/usr/local/bin/pcawg_workflow"]
