@@ -23,5 +23,5 @@ RUN git clone https://github.com/ivazquez/cloneHD.git && cd cloneHD && git check
 RUN cd cloneHD/src && mkdir ../build && make -f Makefile.farm
 
 # Copy scripts to `WORKDIR`
-COPY smchet_workflow.sh *.pl *.py *.cpp Makefile ./
+COPY cloneHD_workflow.sh *.pl *.py *.cpp Makefile ./
 RUN make -f ./Makefile
