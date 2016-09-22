@@ -1,9 +1,10 @@
 #!/usr/bin/env cwl-runner
 
 class: CommandLineTool
-description: "A Docker container for the cloneHD command. See the [cloneHD](http://www.sanger.ac.uk/science/tools/clonehd) website for more information."
+description: "A Docker container for cloneHD SNV clustering. See the [cloneHD](http://www.sanger.ac.uk/science/tools/clonehd) website for more information."
 id: "cloneHD"
 label: "cloneHD tool"
+cwlVersion: v1.0
 
 description: |
     The cloneHD subclonal reconstruction workflow for the ICGC PanCancer Analysis of Whole Genomes (PCAWG) 
@@ -13,11 +14,11 @@ description: |
     ```
     Usage:
     # fetch CWL
-    $> dockstore cwl --entry quay.io/ivazquez/pcawg-clonehd-workflow:1.0-0 > Dockstore.cwl
+    $> dockstore tool cwl --entry quay.io/ivazquez/clonehd-pcawg:1.0-0 > Dockstore.cwl
     # make a runtime JSON template and edit it
     $> dockstore convert cwl2json --cwl Dockstore.cwl > Dockstore.json
     # run it locally with the Dockstore CLI
-    $> dockstore launch --entry quay.io/ivazquez/pcawg-clonehd-workflow:1.0-0 \
+    $> dockstore launch --entry quay.io/ivazquez/clonehd-pcawg:1.0-0 \
         --json Dockstore.json
     ```
 
@@ -28,7 +29,7 @@ dct:creator:
 
 requirements:
   - class: DockerRequirement
-    dockerPull: "quay.io/ivazquez/pcawg-clonehd-workflow:1.0-0"
+    dockerPull: "quay.io/ivazquez/clonehd-pcawg:1.0-0"
   - { import: node-engine.cwl }
 
 hints:
@@ -57,4 +58,4 @@ outputs:
       glob: clonehd_report.zip
     description: "A zip file that contains the cloneHD report and various graphics."
 
-baseCommand: ["bash", "/usr/local/bin/pcawg_workflow"]
+baseCommand: ["bash", "/usr/local/bin/cloneHD_workflow"]
