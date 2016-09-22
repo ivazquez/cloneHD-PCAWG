@@ -5,21 +5,17 @@ description: "A Docker container for cloneHD SNV clustering. See the [cloneHD](h
 id: "cloneHD"
 label: "cloneHD tool"
 cwlVersion: v1.0
-
 description: |
-    The cloneHD subclonal reconstruction workflow for the ICGC PanCancer Analysis of Whole Genomes (PCAWG) 
-		project. For more information see the PCAWG project [page](https://dcc.icgc.org/pcawg) and our 
-		GitHub [page](http://www.sanger.ac.uk/science/tools/clonehd) for our code including the source for 
-		[this workflow](https://github.com/ivazquez/pcawg-clonehd-workflow).
+    ![build_status](https://quay.io/repository/ivazquez/clonehd-pcawg/status)
+    The cloneHD subclonal reconstruction workflow for the ICGC PanCancer Analysis of Whole Genomes (PCAWG) project. For more information see the PCAWG project [page](https://dcc.icgc.org/pcawg) and our GitHub [page](http://www.sanger.ac.uk/science/tools/clonehd) for our code including the source for [this workflow](https://github.com/ivazquez/pcawg-clonehd-workflow).
     ```
     Usage:
     # fetch CWL
     $> dockstore tool cwl --entry quay.io/ivazquez/clonehd-pcawg:1.0-0 > Dockstore.cwl
-    # make a runtime JSON template and edit it
-    $> dockstore convert cwl2json --cwl Dockstore.cwl > Dockstore.json
+    # make a runtime JSON template and edit it (or use the content of sample_configs.json in this git repo)
+    $> dockstore tool convert cwl2json --cwl Dockstore.cwl > Dockstore.json
     # run it locally with the Dockstore CLI
-    $> dockstore launch --entry quay.io/ivazquez/clonehd-pcawg:1.0-0 \
-        --json Dockstore.json
+    $> dockstore tool launch --entry quay.io/ivazquez/clonehd-pcawg:1.0-0 --json Dockstore.json
     ```
 
 dct:creator:

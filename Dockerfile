@@ -8,22 +8,20 @@ FROM ubuntu
 # File Author / Maintainer
 MAINTAINER Ignacio Vazquez-Garcia <ivg@sanger.ac.uk>
 
-# Setup packages
-USER root
-RUN apt-get -m update && apt-get install -y make gcc gfortran \
-build-essential wget git libgsl2 gsl-bin libgsl-dev libblas-dev \
-liblapack-dev python-pip
-RUN pip install numpy scipy PyVCF
+# Install software
+RUN apt-get update && apt-get install -y make gfortran gcc \
+build-essential libgsl2 gsl-bin libgsl-dev libboost-all-dev \
+libblas-dev liblapack-dev git perl python-pip gzip
 
+WORKDIR /opt
+
+# Install python modules
+RUN pip install PyVCF
+
+# Install cloneHD
 RUN git clone https://github.com/ivazquez/cloneHD.git && cd cloneHD && git checkout pcawg
 RUN cd cloneHD/src && mkdir ../build && make -f Makefile.farm
 
-# RUN git clone https://github.com/ivazquez/cloneHD-tools.git && cd cloneHD-tools && git checkout pcawg
-# RUN cd cloneHD-tools && python setup.py install
-
-# Switch back to the ubuntu user so this tool (and the files written) are not owned by root
-RUN groupadd -r -g 1000 ubuntu && useradd -r -g ubuntu -u 1000 -m ubuntu
-USER ubuntu
-
-# By default /bin/bash is executed
-CMD ["/bin/bash"]
+# Copy scripts to `WORKDIR`
+COPY smchet_workflow.sh *.pl *.py *.cpp Makefile ./
+RUN make -f ./Makefile

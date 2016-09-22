@@ -4,7 +4,7 @@ To clone this repository, run the following command in a local directory:
 
     $ git clone https://github.com/ivazquez/cloneHD-PCAWG.git
 
-[![Docker Repository on Quay](https://quay.io/repository/ivazquez/cloneHD-PCAWG/status "Docker Repository on Quay")](https://quay.io/repository/ivazquez/cloneHD-PCAWG)
+[![Docker Repository on Quay](https://quay.io/repository/ivazquez/clonehd-pcawg/status "Docker Repository on Quay")](https://quay.io/repository/ivazquez/clonehd-pcawg)
 
 ## Manual
 
@@ -26,15 +26,15 @@ Now that you are within the `docker` container, you can execute:
 
 Fetch a descriptor file in CWL format that tells Dockstore what are the cloneHD inputs and outputs:
 
-    $ dockstore cwl --entry quay.io/ivazquez/clonehd-pcawg:v1.0-0 > Dockstore.cwl
+    $ dockstore tool cwl --entry quay.io/ivazquez/clonehd-pcawg:v1.0-0 > Dockstore.cwl
 
 You can create a runtime JSON template and edit it (or use the content of sample_config.json above).
 
-    $ dockstore convert cwl2json --cwl Dockstore.cwl > Dockstore.json
+    $ dockstore tool convert cwl2json --cwl Dockstore.cwl > Dockstore.json
 
 You can now run it locally with the Dockstore CLI:
 
-    $ dockstore launch --entry quay.io/ivazquez/clonehd-pcawg:v1.0-0 --json Dockstore.json
+    $ dockstore tool launch --entry quay.io/ivazquez/clonehd-pcawg:v1.0-0 --json Dockstore.json
 
 ## How to cite
 
