@@ -9,14 +9,9 @@ FROM ubuntu
 MAINTAINER Ignacio Vazquez-Garcia <ivg@sanger.ac.uk>
 
 # Install software
-RUN apt-get update && apt-get install -y make gfortran gcc \
-build-essential libgsl2 gsl-bin libgsl-dev libboost-all-dev \
-libblas-dev liblapack-dev git perl python-pip gzip
+RUN apt-get update && apt-get install -y make gcc build-essential libgsl2 gsl-bin libgsl-dev git
 
 WORKDIR /opt
-
-# Install python modules
-RUN pip install PyVCF
 
 # Install cloneHD
 RUN git clone https://github.com/ivazquez/cloneHD.git && cd cloneHD && git checkout pcawg
