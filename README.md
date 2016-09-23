@@ -6,27 +6,27 @@ To clone this repository, run the following command in a local directory:
 
 [![Docker Repository on Quay](https://quay.io/repository/ivazquez/clonehd-pcawg/status "Docker Repository on Quay")](https://quay.io/repository/ivazquez/clonehd-pcawg)
 
-## Manual
+## Local testing
 
-To set up the workflow in a container using `docker`:
+For local testing To set up the workflow in a container using `docker`:
 
-    $ docker build -t quay.io/ivazquez/clonehd-pcawg:v1.0.0 .
+    $ docker build -t quay.io/ivazquez/clonehd-pcawg:latest .
 
-This will build and compile cloneHD and cloneHD-tools, plus all dependencies.
+This will build and compile cloneHD plus all dependencies.
 
     $ wget https://console.developers.google.com/m/cloudstorage/b/galaxyproject_images/o/Tumour2.tar.gz
     $ tar -xvfz Tumour2.tar.gz && cd Tumour2
-    $ docker run -it -v `pwd`/Tumour2.mutect.vcf:/Tumour2.mutect.vcf `pwd`/Tumour2.battenberg.txt:/Tumour2.battenberg.txt ivazquez/pcawg_clonehd_workflow:v1.0-0
+    $ docker run -it -v `pwd`/Tumour2.mutect.vcf:/Tumour2.mutect.vcf `pwd`/Tumour2.battenberg.txt:/Tumour2.battenberg.txt ivazquez/clonehd-pcawg:latest
   
 Now that you are within the `docker` container, you can execute:
 
-    $ /usr/local/bin/cloneHD /Tumour2.vcf /Tumour2.battenberg.txt
+    $ /usr/local/bin/cloneHD_workflow /Tumour2.vcf /Tumour2.battenberg.txt
 
-## Automatic
+## Cloud testing
 
 Fetch a descriptor file in CWL format that tells Dockstore what are the cloneHD inputs and outputs:
 
-    $ dockstore tool cwl --entry quay.io/ivazquez/clonehd-pcawg:v1.0-0 > Dockstore.cwl
+    $ dockstore tool cwl --entry quay.io/ivazquez/clonehd-pcawg:latest > Dockstore.cwl
 
 You can create a runtime JSON template and edit it (or use the content of sample_config.json above).
 
@@ -34,7 +34,7 @@ You can create a runtime JSON template and edit it (or use the content of sample
 
 You can now run it locally with the Dockstore CLI:
 
-    $ dockstore tool launch --entry quay.io/ivazquez/clonehd-pcawg:v1.0-0 --json Dockstore.json
+    $ dockstore tool launch --entry quay.io/ivazquez/clonehd-pcawg:latest --json Dockstore.json
 
 ## How to cite
 
