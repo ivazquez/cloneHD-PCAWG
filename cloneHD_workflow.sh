@@ -74,7 +74,7 @@ mean_tcn=$prefix.mean_tcn.txt
 avail_cn=$prefix.avail_cn.txt
 
 ### SNV parser ###
-python3 opt/cloneHD-PCAWG/cloneHD_snv_parser.py \
+python3 /opt/cloneHD-PCAWG/cloneHD_snv_parser.py \
 	--vcf $input_vcf \
 	--vcf-type 'mutect-smchet' \
 	--sample 'tumor' \
@@ -83,13 +83,13 @@ python3 opt/cloneHD-PCAWG/cloneHD_snv_parser.py \
 ### CNA parser ###
 gender=`awk '{if($1==24){sum++}}END{if(sum>5){print "male"}else{print "female"}}' ${snv}`
 
-perl opt/cloneHD-PCAWG/cloneHD_cna_parser.pl \
+perl /opt/cloneHD-PCAWG/cloneHD_cna_parser.pl \
 	-g $gender \
 	-m "mean-tcn" \
 	-c $input_cna \
 	-o $mean_tcn
 
-perl opt/cloneHD-PCAWG/cloneHD_cna_parser.pl \
+perl /opt/cloneHD-PCAWG/cloneHD_cna_parser.pl \
 	-g $gender \
 	-m "avail-cn" \
 	-c $input_cna \
@@ -126,7 +126,7 @@ do
 		:
 	fi
 	
-	opt/cloneHD-PCAWG/cloneHD/build/cloneHD \
+	/opt/cloneHD-PCAWG/cloneHD/build/cloneHD \
 		--pre $prefix.Nc$n_clones \
 		--snv $snv \
 		--seed $seed \
@@ -148,7 +148,7 @@ do
 done
 
 ## Model selection ###
-perl opt/cloneHD-PCAWG/cloneHD_model_selection.pl \
+perl /opt/cloneHD-PCAWG/cloneHD_model_selection.pl \
     -i ${summary[1]} -j ${snv_posterior[1]} \
     -k ${summary[2]} -l ${snv_posterior[2]} \
     -m ${summary[3]} -n ${snv_posterior[3]} \
