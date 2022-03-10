@@ -126,7 +126,7 @@ do
 		:
 	fi
 	
-	/opt/cloneHD-PCAWG/cloneHD/build/cloneHD \
+	/opt/cloneHD/build/cloneHD \
 		--pre $prefix.Nc$n_clones \
 		--snv $snv \
 		--seed $seed \
